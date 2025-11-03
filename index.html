@@ -368,7 +368,7 @@
                 <div class="info">
                     <h4 class="name">Antonni Souza <span class="shift-turn noturno">Noturno</span></h4>
                     <div class="shift-info">
-                        <strong>Atendimento:</strong> 22:00 - 07:00 (Seg-Sex)<br>
+                        <strong>Atendimento:</strong> 23:00 - 08:00 (Seg-Sex)<br>
                         <strong>Plantão FDS:</strong> 02, 08, 16, 22, 30/11
                     </div>
                 </div>
@@ -379,7 +379,7 @@
                 <div class="info">
                     <h4 class="name">Emilly Souza <span class="shift-turn diurno">Diurno</span></h4>
                     <div class="shift-info">
-                        <strong>Atendimento:</strong> 10:00 - 19:00 (Seg-Sex)<br>
+                        <strong>Atendimento:</strong> 11:00 - 20:00 (Seg-Sex)<br>
                         <strong>Plantão FDS:</strong> 02, 08, 16, 22, 30/11
                     </div>
                 </div>
@@ -390,7 +390,7 @@
                 <div class="info">
                     <h4 class="name">Luana Riquelme <span class="shift-turn diurno">Diurno</span></h4>
                     <div class="shift-info">
-                        <strong>Atendimento:</strong> 07:00 - 16:00 (Seg-Sex)<br>
+                        <strong>Atendimento:</strong> 08:00 - 17:00 (Seg-Sex)<br>
                         <strong>Plantão FDS:</strong> 01, 09, 15, 23, 29/11
                     </div>
                 </div>
@@ -401,7 +401,7 @@
                 <div class="info">
                     <h4 class="name">Luan Gabriel <span class="shift-turn noturno">Noturno</span></h4>
                     <div class="shift-info">
-                        <strong>Atendimento:</strong> 19:00 - 04:00 (Seg-Sex)<br>
+                        <strong>Atendimento:</strong> 20:00 - 05:00 (Seg-Sex)<br>
                         <strong>Plantão FDS:</strong> 01, 09, 15, 23, 29/11
                     </div>
                 </div>
@@ -446,15 +446,15 @@
             'Luan Gabriel': ['01/11/2025', '09/11/2025', '15/11/2025', '23/11/2025', '29/11/2025']
         };
 
+        // --- HORÁRIOS ATUALIZADOS (+1 HORA) ---
         const weekdayShifts = {
-            'Luana Riquelme': { start: 7, end: 16, overnight: false }, // 07:00 - 15:59
-            'Emilly Souza': { start: 10, end: 19, overnight: false }, // 10:00 - 18:59
-            'Luan Gabriel': { start: 19, end: 4, overnight: true },   // 19:00 - 03:59
-            'Antonni Souza': { start: 22, end: 7, overnight: true }    // 22:00 - 06:59
+            'Luana Riquelme': { start: 8, end: 17, overnight: false }, // 08:00 - 16:59
+            'Emilly Souza': { start: 11, end: 20, overnight: false }, // 11:00 - 19:59
+            'Luan Gabriel': { start: 20, end: 5, overnight: true },   // 20:00 - 04:59
+            'Antonni Souza': { start: 23, end: 8, overnight: true }    // 23:00 - 07:59
         };
 
         // --- NOMES DOS FICHEIROS DAS FOTOS (para Netlify/GitHub) ---
-        // (O JavaScript usa estes nomes para preencher os widgets dinamicamente)
         const coordinatorPhotos = {
             'Luana Riquelme': 'Imagem da Luana Riquelme - Coordenação.jpeg',
             'Emilly Souza': 'Imagem da Emilly Souza - Coordenação.jpg',
@@ -564,7 +564,7 @@
             return `${d}/${m}/${y}`;
         }
 
-        // --- LÓGICA ATUALIZADA DOS WIDGETS DE STATUS ---
+        // --- LÓGICA ATUALIZADA DOS WIDGETS DE STATUS (COM HORÁRIOS +1) ---
         function updateOnShiftStatus() {
             const today = new Date();
             const todayStr = getTodayDateString();
@@ -596,7 +596,7 @@
                 let onShiftSet = new Set();
 
                 allCoords.forEach(name => {
-                    const shift = weekdayShifts[name];
+                    const shift = weekdayShifts[name]; // Pega o horário já atualizado (+1)
                     let isOnShift = false;
                     
                     if (shift.overnight) {
